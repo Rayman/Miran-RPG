@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Miran :: <?=$title?></title>
-	<link rel="stylesheet" type="text/css" href="http://miranmedia.krisje8.com/style.css" />
+	<?php echo link_tag('style.css');?>
 </head>
 
 <body>
@@ -64,7 +64,7 @@
         <div id="sidemenu_top">
 
 <?php if(!$logged_in){ ?>
-                <form method="post" action="{% url django.contrib.auth.views.login %}">
+                <form method="post" action="<?=site_url("login/submit")?>">
                     <table>
                         <tr>
                             <td><label for="id_username">Username</label>: <input id="id_username" type="text" name="username" maxlength="30" /></td>
