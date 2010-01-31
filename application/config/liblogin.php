@@ -9,7 +9,6 @@
 | https://www.grc.com/passwords.htm
 |
 */
-
 $config['auth']['salt']	= 'uVDMOgMJWiks5ucY1xYGHQhXiZmz4H1kJVFVUPrpjEMG2qCRd0QzHtVEfkVaN9y';
 
 /*
@@ -17,11 +16,6 @@ $config['auth']['salt']	= 'uVDMOgMJWiks5ucY1xYGHQhXiZmz4H1kJVFVUPrpjEMG2qCRd0QzH
 | Tables
 |--------------------------------------------------------------------------
 */
-
-$config['auth']['countries_table']	= 'countries';
-$config['auth']['questions_table'] 	= 'questions';
-$config['auth']['banned_table']		= 'banned';
-$config['auth']['groups_table']		= 'groups';
 $config['auth']['users_table'] 		= 'users';
 
 /*
@@ -33,7 +27,6 @@ $config['auth']['users_table'] 		= 'users';
 | activate their account before they are allowed to login.
 |
 */
-
 $config['auth']['email_activation'] = false;
 
 /*
@@ -50,35 +43,14 @@ $config['auth']['email_activation'] = false;
 | 'mail_from_email' : Sets the email address of the person sending the email
 | 'mail_from_namae' : Sets the name of the person sending the email
 */
-$config['auth']['mail']['mailtype']		= 'html';
+$config['auth']['mail']['mailtype']	= 'html';
 $config['auth']['mail']['protocol'] 	= 'smtp';
 $config['auth']['mail']['smtp_host'] 	= ''; 
 $config['auth']['mail']['smtp_user'] 	= '';
 $config['auth']['mail']['smtp_pass'] 	= ''; 
 $config['auth']['mail']['smtp_port'] 	= '';
-$config['auth']['mail_from_email'] 		= '';
-$config['auth']['mail_from_name'] 		= '';
-
-/*
-|--------------------------------------------------------------------------
-| Default Group
-|--------------------------------------------------------------------------
-|
-| The default group id your users will acquire
-|
-*/
-$config['auth']['default_group'] = '2';
-
-/*
-|--------------------------------------------------------------------------
-| Optional Columns
-|--------------------------------------------------------------------------
-|
-| Experimental feature, for use see this guide :
-| http://code.google.com/p/reduxauth/wiki/Optional_Registration_Fields
-|
-*/
-$config['auth']['optional_columns']	= false;
+$config['auth']['mail_from_email'] 	= '';
+$config['auth']['mail_from_name'] 	= '';
 
 /*
 |--------------------------------------------------------------------------
