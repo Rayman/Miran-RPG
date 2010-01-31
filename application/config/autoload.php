@@ -40,9 +40,10 @@
 */
 
 $autoload['libraries'] = array(
-  'database',
-  'session',
-  'liblogin'
+	'template',
+	'database',
+	'session',
+	'liblogin'
 );
 
 /*
