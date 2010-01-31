@@ -38,11 +38,11 @@ $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "";
-$db['default']['password'] = "";
-$db['default']['database'] = "";
+$db['default']['username'] = "test";
+$db['default']['password'] = "test";
+$db['default']['database'] = "ci2";
 $db['default']['dbdriver'] = "mysql";
-$db['default']['dbprefix'] = "";
+$db['default']['dbprefix'] = "ci_";
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
@@ -53,3 +53,4 @@ $db['default']['dbcollat'] = "utf8_general_ci";
 
 /* End of file database.php */
 /* Location: ./system/application/config/database.php */
+
