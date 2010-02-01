@@ -1,16 +1,24 @@
 <?php
 
-class User extends Model {
+class Users extends Model {
 
 	var $user_cache;
 
-	function User()
+	function Users()
 	{
 		  parent::Model();
 	}
 
-	function getUser($id = null)
+	function get($id = null)
 	{
+		if(isnull($id))
+		{
+			$id = $this->ci->session->userdata('id');
+		}
+		if(!$id){
+			exit('Error, no id set');
+		}
+		
 		if(isset($user_cache[$id])){
 			return $user_cache[$id];
 		}

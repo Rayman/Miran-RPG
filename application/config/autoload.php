@@ -56,6 +56,7 @@ $autoload['libraries'] = array(
 */
 
 $autoload['helper'] = array(
+	'url',
 	'html'
 );
 
@@ -115,7 +116,7 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array(
-	'user'
+	'Users'
 );
 
 
