@@ -15,7 +15,6 @@ class Login extends Controller {
 	{
 		$data['title'] = 'Login';
 		$data['logged_in'] = false;
-		$data['username'] = 'Rayman';
 		$this->template->load('template', array('content' => 'login/index.php'), $data);
 	}
 
