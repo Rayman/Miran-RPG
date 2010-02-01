@@ -11,9 +11,9 @@ class Users extends Model {
 
 	function get($id = null)
 	{
-		if(isnull($id))
+		if(is_null($id))
 		{
-			$id = $this->ci->session->userdata('id');
+			$id = $this->session->userdata('id');
 		}
 		if(!$id){
 			exit('Error, no id set');
@@ -25,6 +25,13 @@ class Users extends Model {
 		$query = $this->db->get_where('users', array('id' => $id));
 		$user_cache[$id] = $row = $query->row();
 		return $row;
+	}
+	
+	function getData()
+	{
+		$data['user'] = $this->get();
+		$data['logged_in'] = true;
+		return $data;
 	}
 }
 ?>
