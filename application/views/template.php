@@ -130,7 +130,7 @@ if($message)
                 <p>You are not logged in. Please <a href="/accounts/login/">log in</a> to see your stats.</p>
                 <p>If you do not have an account yet, you can <a href="/accounts/register/">register here</a>.</p>                
 <?php } else { ?>
-                    <b><?=$username?></b> <span style="font-size: 9px;">[99]<br />Human</span><br />
+                    <b><?=$user->username?></b> <span style="font-size: 9px;">[99]<br />Human</span><br />
                     <table cellpadding="0" cellspacing="0" style="padding-top: 7px;">
                     	<tr>
                         	<td style="padding-right: 7px;">HP: </td>
