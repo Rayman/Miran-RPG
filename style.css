@@ -461,3 +461,11 @@ input[type=submit] {
 .betatester {
 	color: #4b8f19;
 }
+
+.success {
+	color: green;
+}
+
+.error {
+	color: red;
+}
