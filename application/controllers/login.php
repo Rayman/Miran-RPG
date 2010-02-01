@@ -22,7 +22,7 @@ class Login extends Controller {
   function submit()
   {
     $email    = $this->input->post('email');
-    $password = $this->input->post('password');
+    $password = $this->input->post('pass');
 
     if($this->liblogin->check_email($email))
     {
