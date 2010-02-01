@@ -4,6 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Miran :: <?=$title?></title>
+	<script type="text/javascript" src="<?=base_url()?>js/mootools-1.2.4-core-nc.js"></script>
 	<?php echo link_tag('style.css');?>
 </head>
 
@@ -43,17 +44,17 @@
 	<div id="header">
 <?php if(!$logged_in){ ?>
 		<ul id="topmenu">
-			<li><a href="/">Home</a></li>
-			<li><a href="/accounts/login/">Log in</a></li>
-			<li><a href="/accounts/register/">Register</a></li>
+			<li><a href="<?=site_url()?>">Home</a></li>
+			<li><a href="<?=site_url('login')?>">Log in</a></li>
+			<li><a href="<?=site_url('register')?>">Register</a></li>
 			<li>Contact</li>
 		</ul>
 <?php } else { ?>
-        <ul id="topmenu">
-			<li><a href="/">Miran</a></li>
+    <ul id="topmenu">
+			<li><a href="<?=site_url('stats')?>">Miran</a></li>
 			<li><a href="#">Forum</a></li>
 			<li><a href="#">Somelink</a></li>
-			<li><a href="/accounts/logout/">Logout</a></li>
+			<li><a href="<?=site_url('logout')?>">Logout</a></li>
 		</ul>
 <?php } ?>
     </div>
@@ -65,12 +66,18 @@
 
 <?php if(!$logged_in){ ?>
                 <form method="post" action="<?=site_url("login/submit")?>">
+<?php 
+$message = $this->session->flashdata('message');
+if($message)
+{?>
+										<p class="error"><?=$message?></p>
+<?php } ?>
                     <table>
                         <tr>
-                            <td><label for="id_username">Username</label>: <input id="id_username" type="text" name="username" maxlength="30" /></td>
+                            <td><label for="id_email">Email</label>: <input id="id_email" type="text" name="email" /></td>
                         </tr>
                         <tr>
-                            <td><label for="id_password">Password</label>: <input type="password" name="password" id="id_password" /></td>
+                            <td><label for="id_password">Password</label>: <input type="password" name="pass" id="id_password" /></td>
                         </tr>
                     </table>
 
