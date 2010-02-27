@@ -19,16 +19,21 @@ class Users extends Model {
 			exit('Error, no id set');
 		}
 		
-		if(isset($user_cache[$id])){
-			return $user_cache[$id];
+		if(isset($this->user_cache[$id])){
+			return $this->user_cache[$id];
 		}
 		$query = $this->db->get_where('users', array('id' => $id));
-		$user_cache[$id] = $row = $query->row();
+		$this->user_cache[$id] = $row = $query->row();
 		return $row;
 	}
 	
 	function getData()
 	{
+		//Redirect if not logged in
+    if(!$this->liblogin->logged_in()){
+    	redirect('login');
+    }
+	
 		$data['user'] = $this->get();
 		$data['logged_in'] = true;
 		return $data;
