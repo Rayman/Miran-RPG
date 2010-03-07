@@ -48,5 +48,40 @@ class Users extends Model {
 
     return ($result->num_rows() > 0) ? $result->row() : false;
 	}
+	
+	function timeago($date_from, $date_to = null)
+	{
+		if(is_null($date_to))
+		{
+			$date_to = time();
+		}
+		
+		$this->load->helper('date');
+		
+		$diff = $date_to - $date_from;
+		if($diff < 60)
+		{
+			return ($diff==1) ? $diff.' second ago' : $diff.' seconds ago';
+		} elseif($diff < 3600)
+		{
+			$datediff = floor($diff / 60);
+			return ($datediff==1) ? $datediff.' minute ago' : $datediff.' minutes ago';
+		}
+		elseif($diff < 86400)
+		{
+			$datediff = floor($diff / 60 / 60);
+      return ($datediff==1) ? $datediff.' hour ago' : $datediff.' hours ago';
+		}
+		else
+		{
+			return $this->date->unix_to_human($date_from);
+		}	
+	}
+	
+	function printUsername($id)
+	{
+		$user = $this->get($id);
+		return "<a href=\"" . site_url("users/" . $id) . "\">" . $user->username . "</a>";
+	}
 }
 ?>
