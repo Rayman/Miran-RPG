@@ -47,5 +47,19 @@ class Messaging extends Model {
 	{
 		return false;	
 	}
+	
+	function getMessages($id = null)
+	{
+		if(is_null($id))
+		{
+			$id = $this->session->userdata('id');
+		}
+		if(!$id){
+			exit('Error, no id set');
+		}
+		
+		$query = $this->db->get_where('ci_messages', array('user_id' => $id));
+		return $query->result();
+	}			
 }
 ?>

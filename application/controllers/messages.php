@@ -23,6 +23,17 @@ class Messages extends Controller {
   function inbox()
   {
   	$this->data['title'] = 'Inbox';
+  	
+  	$parsed = array();
+  	$messages = $this->messaging->getMessages();
+  	foreach($messages as $message)
+  	{
+  		$message->received	= $this->Users->timeago($message->received);
+  		$message->sender_id	= $this->Users->printUsername($message->sender_id);
+  		$parsed[] = $message;
+  	}
+  	
+  	$this->data['messages'] = $parsed;
   	$this->_load('inbox');
   }
   
