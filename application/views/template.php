@@ -104,11 +104,11 @@ if($message)
 
                     <li>Game options
                         <ul>
-                            <li><a href="/messages/inbox/"><u>Messages (5)</u></a></li>
-                            <li><a href="/messages/compose/">Send a message</a></li>
-                            <li><a href="/memberlist/">Memberlist</a></li>
-                            <li><a href="/onlineusers/">Online users</li>
-                            <li><a href="/accounts/logout/">Logout</a></li>
+                            <li><a href="<?=site_url('messages/inbox')?>"><u>Messages (5)</u></a></li>
+                            <li><a href="<?=site_url('messages/compose')?>">Send a message</a></li>
+                            <li><a href="<?=site_url('memberlist')?>">Memberlist</a></li>
+                            <li><a href="<?=site_url('memberlist/online')?>">Online users</a></li>
+                            <li><a href="<?=site_url('logout')?>">Logout</a></li>
                         </ul>
                     </li>
 
