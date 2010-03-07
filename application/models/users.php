@@ -38,5 +38,15 @@ class Users extends Model {
 		$data['logged_in'] = true;
 		return $data;
 	}
+	
+	function findUser($username)
+	{
+		$result = $this->db
+			->from('ci_users')
+			->where('username', $username)
+			->get();
+
+    return ($result->num_rows() > 0) ? $result->row() : false;
+	}
 }
 ?>
