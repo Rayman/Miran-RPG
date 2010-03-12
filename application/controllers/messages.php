@@ -71,6 +71,40 @@ class Messages extends Controller {
       }      	
     }
   }
+  
+  function view($id)
+  {
+  	$message = $this->messaging->getMessage($id);
+  	if(!$message)
+		{
+			$this->session->set_flashdata('message', '<p class="error">That message is not available</p>');
+			redirect('messages/inbox');
+		}
+		else
+		{
+			$message->from = $this->Users->printUsername($message->sender_id);
+			$message->received = $this->Users->timeago($message->received);
+			
+			$this->data['title'] = 'Messages :: ' . $message->subject;
+			$this->data['message'] = $message;
+  		$this->_load('view');
+  	}
+  }
+  
+  function delete($id)
+  {
+  	$success = $this->messaging->delete($id);
+  	if($success)
+    {
+      $this->session->set_flashdata('message', '<p class="success">That message has been deleted</p>');
+      redirect('messages/inbox');
+    }
+    else
+    {
+      $this->session->set_flashdata('message', '<p class="error">An error occured</p>');
+      redirect('messages/inbox');
+    }    
+  }
 
   //Used for validating the post variables
   function _validate_form()
