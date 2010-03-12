@@ -56,8 +56,6 @@ class Users extends Model {
 			$date_to = time();
 		}
 		
-		$this->load->helper('date');
-		
 		$diff = $date_to - $date_from;
 		if($diff < 60)
 		{
@@ -74,7 +72,7 @@ class Users extends Model {
 		}
 		else
 		{
-			return $this->date->unix_to_human($date_from);
+			return date("Y-m-d H:i", $date_from);
 		}	
 	}
 	
