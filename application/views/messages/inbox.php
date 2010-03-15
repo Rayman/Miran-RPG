@@ -5,8 +5,8 @@
 		<tr><th>Sender</th><th width="50%">Subject</th><th>Received</th><th>Action</th></tr>
 	</thead>
 	<tbody>
-<?php foreach($messages as $message):?>
-		<tr class="row1">
+<?php $row = 2; foreach($messages as $message):?>
+		<tr class="row<?php echo $row = $row == 2 ? 1 : 2;?>">
 			<td><?=$message->sender_id?></td>
 			<td><a href="<?=site_url("messages/view/".$message->id)?>"><?=$message->subject?></a></td>
 			<td><?=$message->received?></td>
