@@ -43,6 +43,19 @@ class Messages extends Controller {
   	$this->_load('compose');
   }
   
+  function reply($id)
+  {
+  	$message = $this->messaging->getMessage($id);
+  	
+  	$field_data =& $this->form_validation->_field_data;
+  	$field_data['to']['postdata'] = $this->Users->get($message->sender_id)->username;
+  	$field_data['subject']['postdata'] = "RE: " . $message->subject;
+  	$field_data['body']['postdata'] = "\n\n\n== Previous Message ==\n" . $message->body;
+
+  	$this->data['title'] = 'Compose';
+  	$this->_load('compose');
+  }
+  
   function send()
   {
     // Validate all form data
@@ -82,6 +95,14 @@ class Messages extends Controller {
 		}
 		else
 		{
+			if($message->read !== 1)
+			{
+				if(!$this->messaging->set_read($message->id))
+				{
+					exit('Error setting read = 1');
+				}
+			}
+			
 			$message->from = $this->Users->printUsername($message->sender_id);
 			$message->received = $this->Users->timeago($message->received);
 			
