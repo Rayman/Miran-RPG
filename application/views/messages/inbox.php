@@ -8,7 +8,13 @@
 <?php $row = 2; foreach($messages as $message):?>
 		<tr class="row<?php echo $row = $row == 2 ? 1 : 2;?>">
 			<td><?=$message->sender_id?></td>
-			<td><a href="<?=site_url("messages/view/".$message->id)?>"><?=$message->subject?></a></td>
+			<td><?php 
+			echo "<a href=\"" . site_url("messages/view/".$message->id) . "\">";
+			echo $message->read ? "" : "<b>";
+			echo $message->subject;
+			echo $message->read ? "" : "</b>";
+			echo "</a></td>";?>
+
 			<td><?=$message->received?></td>
 			<td><a href="<?=site_url("messages/delete/".$message->id)?>">delete</a></td>
 		</tr>

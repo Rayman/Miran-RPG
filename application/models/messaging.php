@@ -48,6 +48,14 @@ class Messaging extends Model {
 		return false;	
 	}
 	
+	function set_read($id)
+	{
+		$this->db->set('read', 1);
+		$this->db->where('id', $id);
+		$this->db->update('ci_messages');
+		return $this->db->affected_rows() === 1;
+	}
+	
 	function getMessages($id = null)
 	{
 		if(is_null($id))
@@ -58,7 +66,11 @@ class Messaging extends Model {
 			exit('Error, no id set');
 		}
 		
-		$query = $this->db->get_where('ci_messages', array('user_id' => $id));
+		$this->db->from('ci_messages')
+		->where(array('user_id' => $id))
+		->order_by('id', 'desc');
+		
+		$query = $this->db->get();
 		return $query->result();
 	}
 
